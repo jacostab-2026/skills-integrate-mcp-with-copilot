@@ -30,7 +30,14 @@ A super simple FastAPI application that allows students to view and sign up for 
 | Method | Endpoint                                                          | Description                                                         |
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| POST   | `/auth/login`                                                     | Start a teacher session                                             |
+| POST   | `/auth/logout`                                                    | End the current teacher session                                     |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up a student (teacher login required)                          |
+| DELETE | `/activities/{activity_name}/unregister?email=student@mergington.edu` | Unregister a student (teacher login required)                   |
+
+## Teacher access
+
+Activities and participant lists are public. Only signed-in teachers can add or remove students. Teacher accounts are stored in `teachers.json`; the included development account is `mergington.teacher` with password `mergington-teacher`. Replace this account before deploying the application.
 
 ## Data Model
 
